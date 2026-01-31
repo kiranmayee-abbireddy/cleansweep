@@ -33,9 +33,8 @@ if __name__ == '__main__':
         height=700,
         resizable=True,
         min_size=(700, 600),
-        background_color='#F6FFF8',
-        icon='static/img/broom.ico'
+        background_color='#F6FFF8'
     )
 
     # Start the webview loop
-    webview.start()
+    webview.start(icon='static/img/broom.ico')
