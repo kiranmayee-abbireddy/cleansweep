@@ -2,7 +2,7 @@
 
 CleanSweep is a powerful, modern desktop application designed for granular system optimization. It provides developers and power users with total control over file cleanup and organization through a sleek, premium interface.
 
-![Aesthetic Dashboard](https://github.com/kiranmayee-abbireddy/cleansweep/raw/master/static/img/preview.png) *(Add your screenshot here)*
+![Aesthetic Dashboard](static/img/preview.png)
 
 ## ✨ Key Features
 
