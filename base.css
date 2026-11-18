@@ -22,6 +22,7 @@ button, input, select, textarea { font: inherit; }
 [data-slot]:has(> img) > :not(img):not([data-keep]) { display: none !important; }
 @media (max-width: 60rem) { :root { --gutter: 24px; --section-gap-s: 80px; --section-gap: 96px; --section-gap-l: 120px; } }
 @media (max-width: 40rem) { :root { --gutter: 16px; --section-gap-s: 56px; --section-gap: 72px; --section-gap-l: 96px; --gap-columns: 16px; } }
+@media (max-width: 25rem) { :root { --gutter: 12px; } }
 @media (prefers-reduced-motion: reduce) { *:not(.keep-motion), *:not(.keep-motion)::before, *:not(.keep-motion)::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
 /* photographs: natural sat=-15 con=-6 */
 [data-slot] > img { filter: saturate(0.85) contrast(0.94); }
