@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanSweep: Granular Disk Cleanup for Windows</title>
+  <meta name="description" content="Reclaim gigabytes with extension-level control, safe drive wiping, and batch renaming. Single standalone executable for Windows.">
+  <link rel="icon" type="image/x-icon" href="static/img/broom.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&family=Schibsted+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./landing.css">
+</head>
+<body>
+  <header class="site-nav">
+    <div class="container nav-row">
+      <a href="#" class="brand-link">
+        <img src="static/img/broom.png" alt="CleanSweep logo" class="brand-icon">
+        <span>CleanSweep</span>
+      </a>
+      <div class="nav-links-group">
+        <a href="#inspector" class="nav-link">Inspector</a>
+        <a href="#utilities" class="nav-link">Utilities</a>
+        <a href="#specs" class="nav-link">Specifications</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://github.com/kiranmayee-abbireddy/cleansweep" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <a href="dist/CleanSweep.exe" download="CleanSweep.exe" class="btn-primary">Download .exe</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 class="hero-headline">Surgical disk cleanup for Windows</h1>
+          <p class="hero-sentence">Purge junk folders by exact extension while preserving logs and project dependencies.</p>
+          <div class="hero-actions">
+            <a href="dist/CleanSweep.exe" download="CleanSweep.exe" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Download CleanSweep</span>
+            </a>
+            <a href="https://github.com/kiranmayee-abbireddy/cleansweep" class="btn-secondary" target="_blank" rel="noopener">Source Code</a>
+          </div>
+          <div class="hero-file-info">
+            <span class="hero-file-tag">CleanSweep.exe</span>
+            <span>14.3 MB</span>
+            <span>Windows 10 and 11 x64</span>
+            <span>Standalone</span>
+          </div>
+        </div>
+
+        <div class="hero-console" data-slot="hero-product" data-alt="CleanSweep interactive desktop console">
+          <div class="console-head">
+            <div class="console-title-group">
+              <span class="console-badge">Active Engine</span>
+              <span class="console-status-text">Quick Clean Mode</span>
+            </div>
+            <span class="console-guard-pill">App Guard Active</span>
+          </div>
+
+          <div class="console-metrics">
+            <div class="console-stat">
+              <span class="stat-caption">Potential Savings</span>
+              <span class="stat-val num" id="hero-potential">14.40 GB</span>
+            </div>
+            <div class="console-stat">
+              <span class="stat-caption">Lifetime Freed (SQLite)</span>
+              <span class="stat-val num" id="hero-lifetime">42.10 GB</span>
+            </div>
+          </div>
+
+          <div class="console-stream">
+            <div class="stream-row" data-size="4.80">
+              <div class="stream-info">
+                <span class="stream-path">AppData\Local\Temp</span>
+                <span class="stream-meta">4,120 files</span>
+              </div>
+              <div class="stream-action">
+                <span class="stream-tag">.cache</span>
+                <button type="button" class="stream-toggle-btn" aria-pressed="true" aria-label="Toggle .cache files">
+                  <span class="ext-check"></span>
+                  <span class="stream-size">4.80 GB</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="stream-row" data-size="3.20">
+              <div class="stream-info">
+                <span class="stream-path">Windows\Temp</span>
+                <span class="stream-meta">1,240 files</span>
+              </div>
+              <div class="stream-action">
+                <span class="stream-tag">.tmp</span>
+                <button type="button" class="stream-toggle-btn" aria-pressed="true" aria-label="Toggle .tmp files">
+                  <span class="ext-check"></span>
+                  <span class="stream-size">3.20 GB</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="stream-row" data-size="6.40">
+              <div class="stream-info">
+                <span class="stream-path">Downloads</span>
+                <span class="stream-meta">860 files</span>
+              </div>
+              <div class="stream-action">
+                <span class="stream-tag">.iso</span>
+                <button type="button" class="stream-toggle-btn" aria-pressed="true" aria-label="Toggle .iso files">
+                  <span class="ext-check"></span>
+                  <span class="stream-size">6.40 GB</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="stream-row is-preserved" data-size="0.84">
+              <div class="stream-info">
+                <span class="stream-path">Projects\BuildLogs</span>
+                <span class="stream-meta">Protected by rule</span>
+              </div>
+              <div class="stream-action">
+                <span class="stream-tag">.log</span>
+                <button type="button" class="stream-toggle-btn" aria-pressed="false" aria-label="Toggle .log files">
+                  <span class="ext-check"></span>
+                  <span class="stream-size">840 MB</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="console-footer">
+            <div class="console-progress-track">
+              <div class="console-progress-bar" id="hero-progress"></div>
+            </div>
+            <div class="console-footer-actions">
+              <span class="console-msg" id="hero-console-msg">4 targets queued for purge</span>
+              <button type="button" class="btn-console-sweep" id="btn-hero-sweep">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span id="btn-hero-sweep-text">Execute Sweep</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inspector" class="signature-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Inspect before purging</h2>
+          <p class="section-lead">Toggle folders and formats to see calculated savings update live.</p>
+        </div>
+
+        <div class="inspector-workspace">
+          <div class="inspector-grid">
+            <div class="folders-stack">
+              <div class="folder-row">
+                <div class="folder-row-head">
+                  <label class="checkbox-custom">
+                    <input type="checkbox" checked class="folder-toggle" data-folder="win-temp">
+                    <span class="checkmark"></span>
+                    <span class="folder-title">Windows Temp</span>
+                  </label>
+                  <span class="folder-size-val" id="size-win-temp">1.84 GB</span>
+                </div>
+                <div class="extension-tags-row">
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="1.20">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.tmp</span>
+                    <span class="ext-size">1.20 GB</span>
+                  </button>
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="0.44">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.log</span>
+                    <span class="ext-size">440 MB</span>
+                  </button>
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="0.20">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.bak</span>
+                    <span class="ext-size">200 MB</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="folder-row">
+                <div class="folder-row-head">
+                  <label class="checkbox-custom">
+                    <input type="checkbox" checked class="folder-toggle" data-folder="user-temp">
+                    <span class="checkmark"></span>
+                    <span class="folder-title">User Temp</span>
+                  </label>
+                  <span class="folder-size-val" id="size-user-temp">3.42 GB</span>
+                </div>
+                <div class="extension-tags-row">
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="2.10">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.cache</span>
+                    <span class="ext-size">2.10 GB</span>
+                  </button>
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="0.92">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.tmp</span>
+                    <span class="ext-size">920 MB</span>
+                  </button>
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="0.40">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.log</span>
+                    <span class="ext-size">400 MB</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="folder-row">
+                <div class="folder-row-head">
+                  <label class="checkbox-custom">
+                    <input type="checkbox" checked class="folder-toggle" data-folder="recycle">
+                    <span class="checkmark"></span>
+                    <span class="folder-title">Recycle Bin</span>
+                  </label>
+                  <span class="folder-size-val" id="size-recycle">5.10 GB</span>
+                </div>
+                <div class="extension-tags-row">
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="3.50">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.iso</span>
+                    <span class="ext-size">3.50 GB</span>
+                  </button>
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="1.60">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.zip</span>
+                    <span class="ext-size">1.60 GB</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="folder-row">
+                <div class="folder-row-head">
+                  <label class="checkbox-custom">
+                    <input type="checkbox" checked class="folder-toggle" data-folder="downloads">
+                    <span class="checkmark"></span>
+                    <span class="folder-title">Downloads Folder</span>
+                  </label>
+                  <span class="folder-size-val" id="size-downloads">8.65 GB</span>
+                </div>
+                <div class="extension-tags-row">
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="4.25">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.exe</span>
+                    <span class="ext-size">4.25 GB</span>
+                  </button>
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="3.10">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.dmg</span>
+                    <span class="ext-size">3.10 GB</span>
+                  </button>
+                  <button type="button" class="extension-tag-btn" aria-pressed="true" data-size="1.30">
+                    <span class="ext-check"></span>
+                    <span class="ext-name">.crdownload</span>
+                    <span class="ext-size">1.30 GB</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="inspector-summary-panel">
+              <div class="summary-stat-group">
+                <span class="summary-stat-label">Calculated Space Savings</span>
+                <span class="summary-stat-number" id="total-savings">19.01 GB</span>
+              </div>
+              <div class="summary-stat-group">
+                <span class="summary-stat-label">Estimated Files Selected</span>
+                <span class="summary-stat-number" id="total-files">14,280</span>
+              </div>
+              <div class="inspector-audit-details">
+                <span>App Guard safety: Active</span>
+                <span>Target system: Windows 64-bit</span>
+                <span>Storage engine: Local SQLite</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="utilities" class="features-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Four dedicated maintenance utilities</h2>
+          <p class="section-lead">Engineered specifically for developer workflows and system storage recovery.</p>
+        </div>
+
+        <div class="switcher-tablist" role="tablist" aria-label="CleanSweep modes">
+          <button type="button" class="switcher-tab" role="tab" id="tab-quick" aria-selected="true" aria-controls="panel-quick">Quick Clean</button>
+          <button type="button" class="switcher-tab" role="tab" id="tab-deep" aria-selected="false" aria-controls="panel-deep">Deep Clean</button>
+          <button type="button" class="switcher-tab" role="tab" id="tab-rename" aria-selected="false" aria-controls="panel-rename">Bulk Rename</button>
+          <button type="button" class="switcher-tab" role="tab" id="tab-analytics" aria-selected="false" aria-controls="panel-analytics">Analytics</button>
+        </div>
+
+        <div class="switcher-panel" id="panel-quick" role="tabpanel" aria-labelledby="tab-quick">
+          <div class="panel-content">
+            <h3 class="panel-title">Quick clean with granular extension control</h3>
+            <p class="panel-desc">Inspect standard junk paths. Uncheck specific extensions to keep debug logs while wiping temp files.</p>
+            <ul class="panel-list">
+              <li class="panel-list-item">Windows and user temporary directories</li>
+              <li class="panel-list-item">Folder and extension level checkboxes</li>
+              <li class="panel-list-item">Instant calculated space feedback</li>
+            </ul>
+          </div>
+          <div class="panel-spec-box">
+            <div class="spec-line">
+              <span>Target paths</span>
+              <span>Temp, AppData, Recycle, Downloads</span>
+            </div>
+            <div class="spec-line">
+              <span>Extension filter</span>
+              <span>Granular toggle per folder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="switcher-panel" id="panel-deep" role="tabpanel" aria-labelledby="tab-deep" hidden>
+          <div class="panel-content">
+            <h3 class="panel-title">Drive wiping with App Guard protection</h3>
+            <p class="panel-desc">Scan entire mounted drives. App Guard isolates the executable and system files from deletion.</p>
+            <ul class="panel-list">
+              <li class="panel-list-item">Full partition search across all drives</li>
+              <li class="panel-list-item">Bulk deletion by file extension</li>
+              <li class="panel-list-item">Automatic runtime protection</li>
+            </ul>
+          </div>
+          <div class="panel-spec-box">
+            <div class="spec-line">
+              <span>Drive selection</span>
+              <span>C:\, D:\, and secondary storage</span>
+            </div>
+            <div class="spec-line">
+              <span>App Guard engine</span>
+              <span>Locks runtime binary against deletion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="switcher-panel" id="panel-rename" role="tabpanel" aria-labelledby="tab-rename" hidden>
+          <div class="panel-content">
+            <h3 class="panel-title">Batch file renaming with developer mode</h3>
+            <p class="panel-desc">Batch rename files sequentially with an optional no-spaces mode for web-safe asset naming.</p>
+            <ul class="panel-list">
+              <li class="panel-list-item">Sequential numeric naming patterns</li>
+              <li class="panel-list-item">Dev mode strips whitespace</li>
+              <li class="panel-list-item">Live preview before execution</li>
+            </ul>
+          </div>
+          <div class="panel-spec-box">
+            <div class="spec-line">
+              <span>Naming pattern</span>
+              <span>Prefix with incremental numbering</span>
+            </div>
+            <div class="spec-line">
+              <span>No-spaces mode</span>
+              <span>Direct web asset sanitation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="switcher-panel" id="panel-analytics" role="tabpanel" aria-labelledby="tab-analytics" hidden>
+          <div class="panel-content">
+            <h3 class="panel-title">Local persistent tracking with SQLite</h3>
+            <p class="panel-desc">Track lifetime space savings in a local SQLite database without any network calls.</p>
+            <ul class="panel-list">
+              <li class="panel-list-item">Local cleansweep.db database</li>
+              <li class="panel-list-item">Lifetime space and file metrics</li>
+              <li class="panel-list-item">Zero telemetry or network requests</li>
+            </ul>
+          </div>
+          <div class="panel-spec-box">
+            <div class="spec-line">
+              <span>Database engine</span>
+              <span>SQLite 3 (cleansweep.db)</span>
+            </div>
+            <div class="spec-line">
+              <span>Telemetry status</span>
+              <span>Zero network transmission</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="specs" class="specs-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Architecture and runtime specifications</h2>
+          <p class="section-lead">CleanSweep operates as an entirely self-contained single executable.</p>
+        </div>
+
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th scope="col">Property</th>
+              <th scope="col">Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Packaging format</td>
+              <td>Portable standalone Windows executable (CleanSweep.exe)</td>
+            </tr>
+            <tr>
+              <td>Binary payload</td>
+              <td>14.28 MB single portable binary</td>
+            </tr>
+            <tr>
+              <td>Supported systems</td>
+              <td>Windows 10 and Windows 11 (64-bit)</td>
+            </tr>
+            <tr>
+              <td>Local database</td>
+              <td>SQLite3 stored in application directory</td>
+            </tr>
+            <tr>
+              <td>Software license</td>
+              <td>MIT Open Source License</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Common technical questions</h2>
+          <p class="section-lead">Safety limits, storage mechanisms, and Windows compatibility details.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>How does App Guard protect my system?</span>
+              <span class="faq-marker">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>App Guard detects the CleanSweep executable and Windows system directories, locking them against accidental deletion during sweeps.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Does CleanSweep require an installation procedure?</span>
+              <span class="faq-marker">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>CleanSweep requires no installer. Run the single executable from any folder or external storage device.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Can I choose which file extensions are preserved?</span>
+              <span class="faq-marker">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Each folder lists detected file extensions. Uncheck any format to preserve those files during cleanup.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Where is my cleanup history stored?</span>
+              <span class="faq-marker">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>All cleanup metrics stay in a local SQLite file. CleanSweep never makes external network connections.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-band">
+      <div class="container band-grid">
+        <h2 class="band-headline">Reclaim your storage today</h2>
+        <p class="band-sentence">Download the standalone Windows executable with zero background services.</p>
+        <div class="band-actions">
+          <a href="dist/CleanSweep.exe" download="CleanSweep.exe" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Download CleanSweep.exe</span>
+          </a>
+          <a href="https://github.com/kiranmayee-abbireddy/cleansweep" class="btn-secondary" target="_blank" rel="noopener">Inspect Repository</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-mast">
+      <div class="footer-mast-top">
+        <div>
+          <span class="footer-wordmark">CleanSweep</span>
+          <p class="footer-desc">Granular disk cleanup and batch organization utility for Windows.</p>
+        </div>
+        <div class="footer-links-row">
+          <a href="#inspector" class="footer-link">Extension Inspector</a>
+          <a href="#utilities" class="footer-link">Utilities</a>
+          <a href="#specs" class="footer-link">Specifications</a>
+          <a href="#faq" class="footer-link">FAQ</a>
+          <a href="https://github.com/kiranmayee-abbireddy/cleansweep" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+          <a href="dist/CleanSweep.exe" download="CleanSweep.exe" class="footer-link">Download .exe</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>CleanSweep: Standalone Windows Utility</span>
+        <span>Distributed under the MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Hero Live Engine Console */
+    const heroPotentialEl = document.getElementById('hero-potential');
+    const heroLifetimeEl = document.getElementById('hero-lifetime');
+    const heroProgressBar = document.getElementById('hero-progress');
+    const heroMsg = document.getElementById('hero-console-msg');
+    const btnHeroSweep = document.getElementById('btn-hero-sweep');
+    const btnHeroSweepText = document.getElementById('btn-hero-sweep-text');
+
+    let heroSwept = false;
+    let baseLifetimeGB = 42.10;
+
+    function recalculateHeroConsole() {
+      if (heroSwept) return;
+      let total = 0;
+      let activeCount = 0;
+      document.querySelectorAll('.stream-row').forEach(row => {
+        const btn = row.querySelector('.stream-toggle-btn');
+        if (btn && btn.getAttribute('aria-pressed') === 'true') {
+          total += parseFloat(row.dataset.size);
+          activeCount++;
+        }
+      });
+      heroPotentialEl.textContent = total.toFixed(2) + ' GB';
+      heroMsg.textContent = `${activeCount} targets queued for purge`;
+      btnHeroSweep.disabled = activeCount === 0;
+    }
+
+    document.querySelectorAll('.stream-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (heroSwept) return;
+        const current = btn.getAttribute('aria-pressed') === 'true';
+        btn.setAttribute('aria-pressed', current ? 'false' : 'true');
+        recalculateHeroConsole();
+      });
+    });
+
+    if (btnHeroSweep) {
+      btnHeroSweep.addEventListener('click', () => {
+        if (heroSwept) {
+          /* Reset */
+          heroSwept = false;
+          heroProgressBar.style.transform = 'scaleX(0)';
+          btnHeroSweepText.textContent = 'Execute Sweep';
+          document.querySelectorAll('.stream-row').forEach(row => {
+            row.style.opacity = '1';
+            const btn = row.querySelector('.stream-toggle-btn');
+            if (row.classList.contains('is-preserved')) {
+              btn.setAttribute('aria-pressed', 'false');
+            } else {
+              btn.setAttribute('aria-pressed', 'true');
+            }
+          });
+          recalculateHeroConsole();
+          return;
+        }
+
+        const potentialVal = parseFloat(heroPotentialEl.textContent);
+        if (potentialVal <= 0) return;
+
+        btnHeroSweep.disabled = true;
+        heroMsg.textContent = 'Purging targets...';
+        heroProgressBar.style.transform = 'scaleX(1)';
+
+        setTimeout(() => {
+          heroSwept = true;
+          baseLifetimeGB += potentialVal;
+          heroLifetimeEl.textContent = baseLifetimeGB.toFixed(2) + ' GB';
+          heroPotentialEl.textContent = '0.00 GB';
+          heroMsg.textContent = `Purged ${potentialVal.toFixed(2)} GB to SQLite log`;
+          btnHeroSweepText.textContent = 'Reset Console';
+          btnHeroSweep.disabled = false;
+
+          document.querySelectorAll('.stream-row').forEach(row => {
+            const btn = row.querySelector('.stream-toggle-btn');
+            if (btn && btn.getAttribute('aria-pressed') === 'true') {
+              row.style.opacity = '0.4';
+            }
+          });
+        }, 350);
+      });
+    }
+
+    /* Interactive Extension Inspector Simulator */
+    const folderData = {
+      'win-temp': { size: 1.84, files: 1240 },
+      'user-temp': { size: 3.42, files: 4120 },
+      'recycle': { size: 5.10, files: 860 },
+      'downloads': { size: 8.65, files: 8060 }
+    };
+
+    function recalculateInspector() {
+      let totalGB = 0;
+      let totalFiles = 0;
+
+      document.querySelectorAll('.folder-row').forEach(row => {
+        const folderToggle = row.querySelector('.folder-toggle');
+        const folderKey = folderToggle.dataset.folder;
+        const sizeSpan = row.querySelector('.folder-size-val');
+
+        if (!folderToggle.checked) {
+          sizeSpan.textContent = '0.00 GB';
+          return;
+        }
+
+        let folderGB = 0;
+        let activeTags = 0;
+        const buttons = row.querySelectorAll('.extension-tag-btn');
+        buttons.forEach(btn => {
+          if (btn.getAttribute('aria-pressed') === 'true') {
+            folderGB += parseFloat(btn.dataset.size);
+            activeTags++;
+          }
+        });
+
+        sizeSpan.textContent = folderGB.toFixed(2) + ' GB';
+        totalGB += folderGB;
+        if (buttons.length > 0) {
+          totalFiles += Math.round(folderData[folderKey].files * (activeTags / buttons.length));
+        }
+      });
+
+      document.getElementById('total-savings').textContent = totalGB.toFixed(2) + ' GB';
+      document.getElementById('total-files').textContent = totalFiles.toLocaleString();
+    }
+
+    document.querySelectorAll('.folder-toggle').forEach(input => {
+      input.addEventListener('change', () => {
+        const row = input.closest('.folder-row');
+        const buttons = row.querySelectorAll('.extension-tag-btn');
+        buttons.forEach(btn => {
+          btn.setAttribute('aria-pressed', input.checked ? 'true' : 'false');
+        });
+        recalculateInspector();
+      });
+    });
+
+    document.querySelectorAll('.extension-tag-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const current = btn.getAttribute('aria-pressed') === 'true';
+        btn.setAttribute('aria-pressed', current ? 'false' : 'true');
+
+        const row = btn.closest('.folder-row');
+        const folderToggle = row.querySelector('.folder-toggle');
+        const anyActive = Array.from(row.querySelectorAll('.extension-tag-btn')).some(b => b.getAttribute('aria-pressed') === 'true');
+        folderToggle.checked = anyActive;
+
+        recalculateInspector();
+      });
+    });
+
+    /* Mode Switcher Tabs */
+    const tabs = document.querySelectorAll('.switcher-tab');
+    const panels = document.querySelectorAll('.switcher-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        panels.forEach(p => p.hidden = true);
+
+        tab.setAttribute('aria-selected', 'true');
+        const targetId = tab.getAttribute('aria-controls');
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.hidden = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

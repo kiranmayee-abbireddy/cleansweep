@@ -1,0 +1,80 @@
+[
+ {
+  "shape": "Conversational FAQ",
+  "theme": "dose",
+  "axes": "light/grotesk-sans/chromatic-green",
+  "hero": "Counter",
+  "nav": "edge-aligned",
+  "footer": "mast",
+  "imagery": "none",
+  "photos": [],
+  "entry": "2026-11-18",
+  "fingerprint": "cleansweep-panoramic-command-deck",
+  "sections": [
+   "HeroCommandDeck",
+   "Signature",
+   "Features",
+   "Specs",
+   "FAQ",
+   "DownloadBand",
+   "Footer"
+  ],
+  "signature": "panoramic engine workbench",
+  "waived": [],
+  "prompt": "break generic left-right split with panoramic command deck hero",
+  "date": "2026-11-18",
+  "mode": "build"
+ },
+ {
+  "shape": "Conversational FAQ",
+  "theme": "dose",
+  "axes": "light/grotesk-sans/chromatic-green",
+  "hero": "Stage",
+  "nav": "edge-aligned",
+  "footer": "mast",
+  "imagery": "none",
+  "photos": [],
+  "entry": "2026-11-18",
+  "fingerprint": "cleansweep-hero-redesign",
+  "sections": [
+   "HeroConsole",
+   "Signature",
+   "Features",
+   "Specs",
+   "FAQ",
+   "DownloadBand",
+   "Footer"
+  ],
+  "signature": "interactive console and extension inspector",
+  "waived": [],
+  "prompt": "redesign hero with interactive console and surgical disk copy",
+  "date": "2026-11-18",
+  "mode": "build"
+ },
+ {
+  "shape": "Conversational FAQ",
+  "theme": "dose",
+  "axes": "light/grotesk-sans/chromatic-green",
+  "hero": "Banner",
+  "nav": "edge-aligned",
+  "footer": "mast",
+  "imagery": "the product",
+  "photos": [],
+  "entry": "2026-11-18",
+  "fingerprint": "cleansweep-1",
+  "sections": [
+   "Hero",
+   "Signature",
+   "Features",
+   "Specs",
+   "FAQ",
+   "DownloadBand",
+   "Footer"
+  ],
+  "signature": "interactive extension inspector",
+  "waived": [],
+  "prompt": "landing page for CleanSweep with exe download",
+  "date": "2026-11-18",
+  "mode": "build"
+ }
+]

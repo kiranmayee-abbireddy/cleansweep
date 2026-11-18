@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/dist/*"
+  [headers.values]
+    Content-Disposition = "attachment; filename=CleanSweep.exe"

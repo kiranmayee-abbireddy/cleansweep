@@ -1,0 +1,23 @@
+{
+  "scanned": "2026-11-18",
+  "findings": {
+    "fonts": "Poppins (Google Fonts, static/css/style.css L1)",
+    "palette": "Mint Cascade Theme: #4CBBAA (mint), #94d9ce (light mint), #0D4D4D (deep teal), #f4f8f7 (bg light) (static/css/style.css L4-10)",
+    "motion": "CSS transition (static/css/style.css L11)",
+    "spacing": "Custom CSS values (static/css/style.css)",
+    "framework": "Static HTML/CSS/JS (templates/index.html, static/css/style.css) with Flask backend and PyWebView packaging into dist/CleanSweep.exe",
+    "assets": "preview.png (app UI screenshot, static/img/preview.png), broom.png (app logo, static/img/broom.png), dist/CleanSweep.exe (14.3 MB Windows standalone executable)"
+  },
+  "preserve": [
+    "font stack (Poppins)",
+    "palette (Mint Cascade: mint #4CBBAA, deep teal #0D4D4D, light mint #94d9ce, bg-light #f4f8f7)",
+    "real product screenshot (static/img/preview.png) and logo (static/img/broom.png)",
+    "dist/CleanSweep.exe download target"
+  ],
+  "introduce": [
+    "Hallmark shape and tokens",
+    "Floor constraints and sloplint compliance",
+    "Hero discipline and download CTA for CleanSweep.exe",
+    "Accessible states, focus rings, zero transition:all"
+  ]
+}

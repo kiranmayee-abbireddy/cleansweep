@@ -1,0 +1,9 @@
+venv/
+build/
+__pycache__/
+*.py
+*.pyc
+*.spec
+cleansweep.db
+.hallmark/
+.git/
